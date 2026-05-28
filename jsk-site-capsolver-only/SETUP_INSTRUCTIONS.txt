@@ -1,0 +1,59 @@
+====================================================
+  JSK STORE — NETLIFY FULL DEPLOYMENT GUIDE
+====================================================
+
+STEP 1 — FREE DATABASE ਬਣਾਓ (neon.tech)
+-----------------------------------------
+1. neon.tech ਤੇ ਜਾਓ → Sign up (ਬਿਲਕੁਲ free)
+2. New Project → ਕੋਈ ਨਾਂ ਦੇਵੋ
+3. "Connection string" ਕਾਪੀ ਕਰੋ
+   (ਕੁਝ ਇਸ ਤਰ੍ਹਾਂ: postgresql://user:pass@host.neon.tech/dbname)
+
+STEP 2 — GitHub ਤੇ UPLOAD ਕਰੋ
+---------------------------------
+1. ZIP extract ਕਰੋ
+2. github.com → New repository → ਬਣਾਓ
+3. "uploading an existing file" → extracted folder ਦੇ ਅੰਦਰ
+   ਦੀਆਂ ਸਾਰੀਆਂ files ਚੁਣੋ → Commit
+
+STEP 3 — Netlify ਤੇ CONNECT ਕਰੋ
+----------------------------------
+1. app.netlify.com → Add new site → Import from GitHub
+2. ਆਪਣਾ repo ਚੁਣੋ
+3. Build settings (ਆਪੇ ਭਰ ਜਾਣਗੇ netlify.toml ਤੋਂ)
+4. Deploy site ਦੱਬੋ
+
+STEP 4 — ENV VARS ਸੈੱਟ ਕਰੋ
+----------------------------------
+Netlify → Site settings → Environment variables → Add:
+  Key:   DATABASE_URL
+  Value: postgresql://... (Neon ਤੋਂ ਕਾਪੀ ਕੀਤਾ connection string)
+
+  Key:   CAPSOLVER_API_KEY
+  Value: (capsolver.com ਤੋਂ ਤੁਹਾਡੀ API key — Discord hCaptcha support)
+
+  Key:   CAPMONSTER_API_KEY  [optional fallback]
+  Value: (capmonster.cloud ਤੋਂ API key)
+
+  Key:   BOT_SERVER_URL     [Onliner ਲਈ ਹੀ ਚਾਹੀਦਾ]
+  Value: https://prem-eu3.bot-hosting.net:20367
+
+  Key:   BOT_SERVER_SECRET  [Onliner ਲਈ ਹੀ ਚਾਹੀਦਾ]
+  Value: (bothosting .env ਤੋਂ API_SECRET value)
+
+  ਨੋਟ: Server Join/Leave ਹੁਣ BOT_SERVER_URL ਤੋਂ ਬਿਨਾਂ ਕੰਮ ਕਰਦਾ ਹੈ!
+
+STEP 5 — REDEPLOY ਕਰੋ
+------------------------
+Deploys tab → Trigger deploy → Deploy site
+
+STEP 6 — DONE!
+---------------
+Admin panel: https://ਤੁਹਾਡੀ-ਸਾਈਟ.netlify.app/admin
+Password: JSK@Admin2024
+(ਪਹਿਲੀ ਵਾਰ login ਕਰਕੇ ਤੁਰੰਤ password ਬਦਲੋ)
+
+Tables ਆਪੇ ਬਣਦੀਆਂ ਨੇ — ਕੁਝ manually ਨਹੀਂ ਕਰਨਾ।
+
+Discord: https://discord.gg/udHrZrp6Rw
+====================================================
